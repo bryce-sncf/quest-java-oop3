@@ -39,21 +39,17 @@ public class Eagle extends Bird implements Fly {
     }
 
     @Override
-    public void glide() {
-        if (this.flying && this.altitude > 0) {
-            System.out.println("glides into the air.");
+    public void descend(int meters) {
+        if (this.flying) {
+            this.altitude += meters;
+            System.out.printf("%s flies downward, altitude: %d%n", this.getName(), this.altitude);
         }
     }
 
     @Override
-    public void descend(int meters) {
-        if (this.flying) {
-            if (this.altitude - meters >= 0) {
-                this.altitude -= meters;
-                System.out.printf("%s flies downward, altitude: %d%n", this.getName(), this.altitude);
-            } else {
-                System.out.println(getName() + " is too high, it can't land.");
-            }
+    public void glide() {
+        if (this.flying && this.altitude > 0) {
+            System.out.println("glides into the air.");
         }
     }
 
